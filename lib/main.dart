@@ -11,7 +11,7 @@ void main() {
   );
 }
 
-class MyApp extends HookConsumerWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -24,26 +24,6 @@ class MyApp extends HookConsumerWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: const IndexPage(),
-      //   home: Consumer(
-      //     builder: (context, ref, child) {
-      // final isLoggedIn = ref.watch(isLoggedInProvider);
-      //       isLoggedIn.when(data: (data) {
-      //         print(data);
-      //         return const MainView();
-      //       }, error: (error, stackTrac) {
-      //         return Container();
-      //       }, loading: () {
-      //         return const Center(
-      //           child: CircularProgressIndicator(),
-      //         );
-      //       });
-      //       // if (isLoggedIn) {
-      //       //   return const MainView();
-      //       // } else {
-      //       //   return const LoginPage();
-      //       // }
-      //     },
-      //   ),
     );
   }
 }
