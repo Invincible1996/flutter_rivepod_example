@@ -4,9 +4,5 @@ import '../models/auth_state.dart';
 import '../notifiers/auth_state_notifier.dart';
 
 final authStateProvider = StateNotifierProvider<AuthStateNotifier, AuthState>(
-    // (ref) => AuthStateNotifier()..checkLlogin(),
-    (ref) {
-  final authStateNotifier = AuthStateNotifier();
-  authStateNotifier.checkLlogin();
-  return authStateNotifier;
-});
+  (ref) => AuthStateNotifier()..checkLogin(),
+);

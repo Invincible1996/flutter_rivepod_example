@@ -1,4 +1,4 @@
-# rivepod_example
+# riverpod_example
 
 A new Flutter project using riverpod manage state.
 

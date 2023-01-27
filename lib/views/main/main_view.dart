@@ -4,36 +4,34 @@
 /// @Description:
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:rivepod_example/state/auth/providers/auth_state_provider.dart';
 import 'package:rivepod_example/state/main/state/main_tab_change_provider.dart';
+import 'package:rivepod_example/views/home/home_page.dart';
+import 'package:rivepod_example/views/message/message_page.dart';
+import 'package:rivepod_example/views/user/user_page.dart';
 
 class MainView extends ConsumerWidget {
   const MainView({super.key});
 
+  final List<Widget> _pages = const [
+    HomePage(),
+    MessagePage(),
+    UserPage(),
+  ];
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('MainView'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              ref.read(authStateProvider.notifier).logOut();
-            },
-            child: const Text(
-              'log out',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          )
-        ],
-      ),
-      body: Container(),
+      // appBar: AppBar(
+      //   title: const Text('MainView'),
+      // ),
+      body: PageView.builder(
+          controller: ref.watch(mainTabChangeProvider).pageController,
+          itemCount: _pages.length,
+          itemBuilder: (context, index) => _pages[index]),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: ref.watch(mainTabChangeProvider),
+        currentIndex: ref.watch(mainTabChangeProvider).pageIndex!,
         onTap: (value) =>
-            ref.read(mainTabChangeProvider.notifier).chageTab(value),
+            ref.read(mainTabChangeProvider.notifier).changeTab(value),
         items: const [
           BottomNavigationBarItem(
               icon: Icon(

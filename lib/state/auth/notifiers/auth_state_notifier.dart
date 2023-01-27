@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rivepod_example/util/storage.dart';
 
@@ -25,9 +26,9 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     // });
   }
 
-  Future<String?> checkLlogin() async {
+  Future<String?> checkLogin() async {
     var isLogged = await Storage.getData('isLogged');
-    print(isLogged.runtimeType);
+    debugPrint(isLogged.runtimeType.toString());
     if (isLogged != null) {
       state = AuthState(
         result: AuthResult.success,
@@ -40,9 +41,9 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
 
   login() async {
     var result = await _authenticator.login();
-    Storage.saveData('isLogged', "true");
+
     state = AuthState(
-      result: AuthResult.success,
+      result: result,
       isLoading: false,
       userId: _authenticator.userId,
     );

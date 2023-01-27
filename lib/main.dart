@@ -5,7 +5,6 @@ import 'package:rivepod_example/views/main/index_page.dart';
 void main() {
   runApp(
     const ProviderScope(
-      overrides: [],
       child: MyApp(),
     ),
   );
@@ -21,6 +20,7 @@ class MyApp extends ConsumerWidget {
         brightness: Brightness.light,
         primarySwatch: Colors.blueGrey,
         indicatorColor: Colors.blueGrey,
+        useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
       home: const IndexPage(),

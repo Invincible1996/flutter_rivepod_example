@@ -1,5 +1,4 @@
-import 'package:rivepod_example/util/storage.dart';
-
+import '../../../util/storage.dart';
 import '../models/auth_result.dart';
 
 /// @author Kevin
@@ -15,6 +14,7 @@ class Authenticator {
   set isAlreadyLoggedIn(value) {}
 
   Future<AuthResult> login() async {
+    Storage.saveData('isLogged', "true");
     isAlreadyLoggedIn = true;
     return AuthResult.success;
   }
